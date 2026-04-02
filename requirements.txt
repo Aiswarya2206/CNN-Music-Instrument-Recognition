@@ -1,9 +1,8 @@
 streamlit
-tensorflow-cpu
-librosa
 numpy
-pandas
-matplotlib
-scikit-learn
+tensorflow
+librosa
 opencv-python-headless
-fpdf
+matplotlib
+fpdf2
+gdown
