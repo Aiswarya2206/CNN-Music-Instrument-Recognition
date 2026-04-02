@@ -37,7 +37,7 @@ except ImportError:
 #  3. Copy link  →  https://drive.google.com/file/d/THIS_IS_IT/view
 #  4. Paste only the ID string below
 # ─────────────────────────────────────────────────────────────
-GDRIVE_FILE_ID = "https://drive.google.com/drive/folders/1GXt7K9QBieZxmG8k-mx9uYvjo3TvzCHQ?usp=sharing"   # ← replace this
+GDRIVE_FILE_ID = "1GXt7K9QBieZxmG8k-mx9uYvjo3TvzCHQ"   # ← replace this
 MODEL_PATH     = "best_model.h5"              # local cache path
 
 
@@ -205,7 +205,8 @@ def load_and_preprocess(path):
     y, sr = librosa.load(path, sr=None, mono=False)
     if y.ndim > 1:
         y = librosa.to_mono(y)
-    if sr != SR:
+    ifocate this block:
+ sr != SR:
         y = librosa.resample(y, orig_sr=sr, target_sr=SR)
     y, _ = librosa.effects.trim(y, top_db=20)
     if np.max(np.abs(y)) > 0:
@@ -247,7 +248,7 @@ def load_model():
             return None
         url = f"https://drive.google.com/uc?id={GDRIVE_FILE_ID}"
         with st.spinner("Downloading model... this may take a minute ☕"):
-            gdown.download(url, MODEL_PATH, quiet=False)
+            gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
 
     if not os.path.exists(MODEL_PATH):
         st.error("❌ Model download failed. Check your Google Drive file ID and sharing permissions.")
